@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManagementUserController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Siswa\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix("/")->group(function () {
+    Route::get("/", [AuthController::class, "index"])->name("siswa.auth.login");
+    Route::post("login", [AuthController::class, "loginStore"])->name("siswa.auth.login.store");
+    Route::get("register", [AuthController::class, "register"])->name("siswa.auth.register");
+    Route::post("register", [AuthController::class, "registerStore"])->name("siswa.auth.register.store");
 });
-
 
 Route::prefix("admin")->group(function () {
     Route::get("dashboard", [DashboardController::class, "index"])->name("dashboard.index");

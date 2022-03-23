@@ -1,19 +1,19 @@
 @extends('layouts.auth')
 
 @section('content')
-    <x-auth-layout title="Welcome Back !" subtitle="Sign in to continue to PPDB.">
+    <x-auth-layout title="Welcome Back !" subtitle="Sign in to continue to PPDB." withRegister>
         <div class="card-body pt-5">
             <div class="p-2">
                 @if (session()->get('message'))
                     <div class="alert alert-danger">{{ session()->get('message') }}</div>
                 @endif
-                <form class="form-horizontal" method="POST" action="{{ route('login.store') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('siswa.auth.login.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label" for="username">Username</label>
-                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                            placeholder="Enter username" name="username">
-                        @error('username')
+                        <label class="form-label" for="email">Email</label>
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
+                            placeholder="Enter email" name="email">
+                        @error('email')
                             <div class="invalid-feedback"> {{ $message }}</div>
                         @enderror
                     </div>
