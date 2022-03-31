@@ -122,6 +122,7 @@ class HomeController extends Controller
             Dokumen::updateOrCreate(['siswa_id' => user("guest")->id], ["ijazah" => $data->ijazah]);
         }
 
+        Siswa::find(user('guest')->id)->update(['status' => MENUNGGU]);
         return response()->json(['status' => true, "message" => "Berhasil mengubah data"]);
     }
 }

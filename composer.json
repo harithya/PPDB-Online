@@ -34,7 +34,8 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "app/Helpers/GeneralHelper.php"
+            "app/Helpers/GeneralHelper.php",
+            "config/constant.php"
         ]
     },
     "scripts": {

@@ -5,44 +5,30 @@
     <x-main-layout title="Selamat Datang">
         <div class="row">
             <div class="col-md-12">
-                <div class="card bg-primary">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="text-white-50">
-                                    <h5 class="text-white mb-4">Panduan Pengisian Profile</h5>
-                                    <p>
-                                        Harap segera mengisi form pendaftaran yang sudah di sediakan, ada beberapa yang
-                                        harus diperhatikan, diantaranya :
-                                    <ul>
-                                        <li>Mengisi data identitas dengan tepat</li>
-                                        <li>Melampirkan pas foto 2x3</li>
-                                        <li>Melampirkan ijazah dari sekolah sebelumnya</li>
-                                    </ul>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="mt-4">
-                                    <img src="https://themesbrand.com/qovex/layouts/assets/images/widget-img.png" alt=""
-                                        class="img-fluid mx-auto d-block">
-                                </div>
-                            </div>
-                        </div>
+                @if ($siswa->status == MENUNGGU)
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <i class="fas fa-info-circle me-2"></i> Harap segera melakukan pembayaran sampai dengan batas waktu
+                        {{ dateTime(setting()->waktu_selesai) }}
+                        {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button> --}}
                     </div>
-                </div>
+                @else
+                    <x-panduan-alert />
+                @endif
             </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Pendaftaran Siswa</h4>
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-title">Pendaftaran Siswa</h4>
+                            <h4 class="card-title" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                title="Jumlah Kuota Pendaftaran">{{ user('guest')->id }} / {{ setting()->kuota }}</h4>
+                        </div>
                         <p class="card-title-desc">Isian data harus sesuai dengan dokumen terkait seperti ijazah dll</p>
-
-
                         <div id="form-horizontal" class="form-horizontal form-wizard-wrapper">
-                            {{-- @include('siswa.home.form.identitas') --}}
-                            {{-- @include('siswa.home.form.orang-tua') --}}
-                            {{-- @include('siswa.home.form.alamat') --}}
+                            @include('siswa.home.form.identitas')
+                            @include('siswa.home.form.orang-tua')
+                            @include('siswa.home.form.alamat')
                             @include('siswa.home.form.dokumen')
                         </div>
                     </div>

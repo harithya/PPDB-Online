@@ -39,8 +39,7 @@
                 if ($("#pas_foto")[0].files[0]) {
                     dokumenData.append("pas_foto", $("#pas_foto")[0].files[0]);
                 }
-                console.log($("#form-dokumen").serialize())
-                const dokumen = postData(dokumenData, "form-dokumen", "dokumen");
+                const dokumen = postData(dokumenData, "form-dokumen", "dokumen", false);
                 if (dokumen.responseJSON.status) {
                     location.reload();
                 }
@@ -49,13 +48,13 @@
         })
     })
 
-    const postData = (data, selector, url) => {
+    const postData = (data, selector, url, withImage = undefined) => {
         return $.ajax({
             method: "POST",
             data: data,
             url: BaseUrl + url,
-            contentType: false,
-            processData: false,
+            contentType: withImage,
+            processData: withImage,
             async: false,
             beforeSend: function() {
                 resetForm()

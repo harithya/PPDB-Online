@@ -40,7 +40,15 @@ class AuthController extends Controller
             'email' => 'required|email|unique:siswa',
             'password' => 'required|string|min:6',
         ]);
-        Siswa::create(array_merge($request->except("password"), ['password' => bcrypt($request->password)]));
+        $check = Siswa::orderBy("id", "desc")->first();
+
+        Siswa::create(array_merge(
+            $request->except("password"),
+            [
+                'password' => bcrypt($request->password),
+                'id' => $check ? $check->id + 1 : 1
+            ]
+        ));
         return back()->with('message', 'Selamat akun anda berhasil dibuat');
     }
 }

@@ -7,7 +7,6 @@
                     <label>Pas Foto</label>
                     <input type="file" name="pas_foto" class="form-control file-input" id="pas_foto">
                     <div class="img-preview">
-
                         <img src="{{ $dokumen->pas_foto? url('storage/' . $dokumen->pas_foto): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
                             id="preview_pas_foto" class="{{ optional($dokumen)->pas_foto ? 'img-thumbnail' : '' }}">
                     </div>
