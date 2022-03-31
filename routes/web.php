@@ -32,6 +32,7 @@ Route::prefix("/")->group(function () {
         Route::post("identitas", [HomeController::class, "identitas"])->name("siswa.form.identitas");
         Route::post("orang-tua", [HomeController::class, "orangTua"])->name("siswa.form.orang-tua");
         Route::post("alamat", [HomeController::class, "alamat"])->name("siswa.form.alamat");
+        Route::post("dokumen", [HomeController::class, "dokumen"])->name("siswa.form.dokumen");
     });
 });
 

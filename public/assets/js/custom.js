@@ -9,7 +9,6 @@ $(document).ajaxStop(function () {
 })
 
 $(".preloader").hide()
-$('.dropify').dropify();
 
 $(".btn-add").on("click", function () {
     $("#id").val("");
@@ -256,4 +255,16 @@ $(document).on("change", ".provinsi", async function () {
 
 $(document).on('change', ".kota", async function () {
     await getKecamatan('.kecamatan', $(this).val())
+})
+
+$(document).on("change", ".file-input", function (e) {
+    // preview image before upload
+    const file = e.target.files[0];
+    const getIdImage = $(this).attr("id");
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        $(`#preview_${getIdImage}`).attr("src", e.target.result);
+        $(`#preview_${getIdImage}`).addClass("img-thumbnail");
+    }
+    reader.readAsDataURL(file);
 })

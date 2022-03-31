@@ -7,6 +7,8 @@
             bodyTag: "fieldset",
             transitionEffect: "fade",
             onStepChanging: (e, currentIndex) => {
+
+                $('.dropify').dropify();
                 switch (currentIndex) {
                     case 0:
                         const identitasData = $("#form-identitas").serialize();
@@ -27,6 +29,22 @@
                     default:
                         break;
                 }
+            },
+            onFinishing: function() {
+                let dokumenData = new FormData();
+                console.log($("#pas_foto")[0].files[0])
+                if ($("#ijazah")[0].files[0]) {
+                    dokumenData.append("ijazah", $("#ijazah")[0].files[0]);
+                }
+                if ($("#pas_foto")[0].files[0]) {
+                    dokumenData.append("pas_foto", $("#pas_foto")[0].files[0]);
+                }
+                console.log($("#form-dokumen").serialize())
+                const dokumen = postData(dokumenData, "form-dokumen", "dokumen");
+                if (dokumen.responseJSON.status) {
+                    location.reload();
+                }
+                return dokumen.responseJSON.status ? true : false;
             }
         })
     })
@@ -36,6 +54,8 @@
             method: "POST",
             data: data,
             url: BaseUrl + url,
+            contentType: false,
+            processData: false,
             async: false,
             beforeSend: function() {
                 resetForm()

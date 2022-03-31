@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Siswa;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alamat;
+use App\Models\Dokumen;
 use App\Models\OrangTua;
 use App\Models\Pekerjaan;
 use App\Models\Penghasilan;
@@ -24,6 +25,7 @@ class HomeController extends Controller
             ->leftJoin("kecamatan", "kecamatan.id", "=", "alamat.kecamatan_id")
             ->leftJoin("kota", "kota.id", "=", "kecamatan.kota_id")
             ->first();
+        $data['dokumen'] =  Dokumen::where("siswa_id", user("guest")->id)->first();
         return view("siswa.home.index", $data);
     }
 
@@ -61,7 +63,7 @@ class HomeController extends Controller
                 ['nama' => $request->nama_ortu]
             )
         );
-        return response()->json(['status' => true, "message" => "Berhasil mengubah orang tua"]);
+        return response()->json(['status' => true, "message" => "Berhasil mengubah data orang tua"]);
     }
 
     public function alamat(Request $request)
@@ -77,5 +79,49 @@ class HomeController extends Controller
         ]);
         Alamat::updateOrCreate(['siswa_id' => user('guest')->id], $request->all());
         return response()->json(['status' => true, "message" => "Berhasil mengubah alamat"]);
+    }
+
+    public function dokumen(Request $request)
+    {
+        $checkFile = Dokumen::where("siswa_id", user('guest')->id);
+        $rule = $checkFile->count() == 0 ? 'required' : 'nullable';
+        $request->validate([
+            'pas_foto' => $rule . '|image|mimes:jpeg,png,jpg,gif,svg|max:204',
+            'ijazah' => $rule . '|image|mimes:jpeg,png,jpg,gif,svg|max:204',
+        ]);
+
+        $data = $checkFile->first();
+        if ($request->file("pas_foto")) {
+            //delete image if exist
+            if ($data) {
+                //check file exist
+                if (file_exists(public_path('storage/' . $data->pas_foto))) {
+                    unlink(public_path('storage/' . $data->pas_foto));
+                }
+            }
+            //upload to storage
+            $pas_foto = $request->file("pas_foto")->store("public/dokumen");
+            $pas_foto = str_replace("public/", "", $pas_foto);
+            Dokumen::updateOrCreate(['siswa_id' => user("guest")->id], ["pas_foto" => $pas_foto]);
+        } else {
+            Dokumen::updateOrCreate(['siswa_id' => user("guest")->id], ["pas_foto" => $data->pas_foto]);
+        }
+
+        if ($request->file("ijazah")) {
+            if ($data) {
+                // check file exist
+                if (file_exists(public_path('storage/' . $data->pas_ijazah))) {
+                    unlink(public_path('storage/' . $data->ijazah));
+                }
+            }
+            //upload to storage
+            $ijazah = $request->file("ijazah")->store("public/dokumen");
+            $ijazah = str_replace("public/", "", $ijazah);
+            Dokumen::updateOrCreate(['siswa_id' => user("guest")->id], ["ijazah" => $ijazah]);
+        } else {
+            Dokumen::updateOrCreate(['siswa_id' => user("guest")->id], ["ijazah" => $data->ijazah]);
+        }
+
+        return response()->json(['status' => true, "message" => "Berhasil mengubah data"]);
     }
 }

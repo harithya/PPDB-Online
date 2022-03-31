@@ -3621,3 +3621,26 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
 .crud-dropdown a {
     color: #8687a7 !important;
 }
+
+.img-preview {
+    height: 200px;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+    border: 1px solid #ced4da;
+}
+
+.img-preview img {
+    /* width: 100%; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.img-thumbnail {
+    object-fit: contain !important;
+    border-radius: 0px !important;
+}
