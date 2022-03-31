@@ -7,11 +7,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> © Qovex.
+                </script> © STMIK Tasikmalaya.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Themesbrand
+                    Design & Develop by haruthya
                 </div>
             </div>
         </div>
@@ -49,7 +49,14 @@
 <!-- Responsive examples -->
 <script src="https://simpeg.stit-alhidayah.ac.id/assets/node_modules/dropify/dist/js/dropify.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
-<!--stickey kit -->
+<!-- form wizard -->
+<script src="{{ asset('assets') }}/libs/jquery-steps/build/jquery.steps.min.js"></script>
+<!-- apexcharts -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 
 <script src="{{ asset('assets') }}/js/app.js"></script>
 <script src="{{ asset('assets') }}/js/custom.js?v={{ microtime() }}"></script>
@@ -63,6 +70,7 @@
     //     }, 500);
     // })
 </script> --}}
+
 
 </body>
 

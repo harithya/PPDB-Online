@@ -9,6 +9,7 @@ $(document).ajaxStop(function () {
 })
 
 $(".preloader").hide()
+$('.dropify').dropify();
 
 $(".btn-add").on("click", function () {
     $("#id").val("");
@@ -16,6 +17,8 @@ $(".btn-add").on("click", function () {
 })
 
 let BaseUrl = $('meta[name="base-url"]').attr("content")
+let BASE_URL = $('meta[name="url"]').attr("content")
+
 // $(".uang").mask("000.000.000.000", { reverse: true });
 
 const _alert = (status, message) => {
@@ -196,119 +199,61 @@ const actionWithUrl = (url, id, custom = "") => {
 
 
 
-
-(function ($) {
-    $.fn.nesting = function (param) {
-        // jika element yang di pilih di ubah
-        $(this).on('change', function () {
-            // melakukan request ke url yang di minta
-            $.ajax({
-                url: param.url,
-                async: false,
-                method: "GET",
-                data: {
-                    id: $(this).val()
-                },
-                beforeSend: function (data) {
-                    $(param.child).empty();
-                    $(param.child).append(new Option('Loading..', ''));
-                },
-                success: function (data) {
-                    $(param.child).empty(); // hapus element yang sebelumnya
-                    // jika result nya kosong
-                    $(param.child).append(new Option('Pilih', ''));
-                    $.each(data, function (i, val) {
-                        $(param.child).append(new Option(val.kota, val.id));
-                    })
+const getKota = (selector, provinsiID) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: BASE_URL + "/ajax/kota/" + provinsiID,
+            beforeSend: function () {
+                $(selector).html(`<option value="">Loading..</option>`);
+            },
+            success: function (res) {
+                $(selector).empty();
+                $(selector).append(`<option value="">Pilih</option>`);
+                for (let i = 0; i < res.length; i++) {
+                    $(selector).append(
+                        $("<option>", {
+                            value: res[i].id,
+                            text: res[i].kota
+                        })
+                    );
                 }
-            })
-        })
+                resolve(true);
+            }
+        });
+    })
+};
 
-        // jika selected data 
-        if (param.selected != null) {
+const getKecamatan = (selector, kotaID) => {
+    return new Promise((resolve, reject) => {
+        if (kotaID) {
             $.ajax({
-                url: param.url,
-                async: false,
-                method: "GET",
-                data: {
-                    id: $(this).val()
+                url: BASE_URL + "/ajax/kecamatan/" + kotaID,
+                beforeSend: function () {
+                    $(selector).html(`<option value="">Loading..</option>`);
                 },
-                beforeSend: function (data) {
-                    $(param.child).empty();
-                    $(param.child).append(new Option('Loading..', ''));
-                },
-                success: function (data) {
-                    $(param.child).empty(); // hapus element yang sebelumnya
-                    // jika result nya kosong
-                    $(param.child).append(new Option('Pilih', ''));
-                    $.each(data, function (i, val) {
-                        $(param.child).append(new Option(val.kota, val.id));
-                    })
-
-                    $(param.child + " option[value='" + param.selected + "']").prop('selected', true);
+                success: function (res) {
+                    $(selector).empty();
+                    $(selector).append(`<option value="">Pilih</option>`);
+                    for (let i = 0; i < res.length; i++) {
+                        $(selector).append(
+                            $("<option>", {
+                                value: res[i].id,
+                                text: res[i].kecamatan
+                            })
+                        );
+                    }
+                    resolve(true)
                 }
-            })
-        } else {
-            $(param.child).empty(); // hapus element yang sebelumnya
-            $(param.child).append(new Option('Pilih', ''));
+            });
         }
-    }
+    })
+};
 
-    function namafungsi(parameter) {
-        //kodenya disini
-    }
+$(document).on("change", ".provinsi", async function () {
+    // console.log("test")
+    await getKota(".kota", $(this).val());
+});
 
-}(jQuery));
-
-$(document).ready(function () {
-
-
-    // $(".select-multiple").select2({
-    //     multiple: true,
-    //     placeholder: "Jawaban Anda",
-    //     // allowClear: true
-    // })
-
-    // $(".select").select2();
-
-    // $( '.uang' ).mask('000.000.000.000', {reverse: true});
-
-    // // Basic
-    // $('.dropify').dropify();
-
-    // // Translated
-    // $('.dropify-fr').dropify({
-    //     messages: {
-    //         default: 'Glissez-dÃ©posez un fichier ici ou cliquez',
-    //         replace: 'Glissez-dÃ©posez un fichier ou cliquez pour remplacer',
-    //         remove: 'Supprimer',
-    //         error: 'DÃ©solÃ©, le fichier trop volumineux'
-    //     }
-    // });
-
-    // // Used events
-    // var drEvent = $('#input-file-events').dropify();
-
-    // drEvent.on('dropify.beforeClear', function(event, element) {
-    //     return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-    // });
-
-    // drEvent.on('dropify.afterClear', function(event, element) {
-    //     alert('File deleted');
-    // });
-
-    // drEvent.on('dropify.errors', function(event, element) {
-    //     console.log('Has Errors');
-    // });
-
-    // var drDestroy = $('#input-file-to-destroy').dropify();
-    // drDestroy = drDestroy.data('dropify')
-    // $('#toggleDropify').on('click', function(e) {
-    //     e.preventDefault();
-    //     if (drDestroy.isDropified()) {
-    //         drDestroy.destroy();
-    //     } else {
-    //         drDestroy.init();
-    //     }
-    // })
+$(document).on('change', ".kota", async function () {
+    await getKecamatan('.kecamatan', $(this).val())
 })

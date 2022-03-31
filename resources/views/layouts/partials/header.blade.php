@@ -26,6 +26,7 @@
     <link rel="stylesheet"
         href="https://simpeg.stit-alhidayah.ac.id/assets/node_modules/dropify/dist/css/dropify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('assets') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -67,39 +68,11 @@
                         </button>
 
                         <div class="topnav">
-                            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-
-                                <div class="collapse navbar-collapse" id="topnav-menu-content">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('dashboard.index') }}"
-                                                role="button">
-                                                Dashboard
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('management-user.index') }}"
-                                                role="button">
-                                                Management User
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('siswa.index') }}"
-                                                role="button">
-                                                Siswa Pendaftar
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" role="button">
-                                                Validasi Pembayaran
-                                            </a>
-                                        </li>
-
-
-
-                                    </ul>
-                                </div>
-                            </nav>
+                            @if (request()->segment(1) == 'siswa')
+                                @include('layouts.partials._siswa')
+                            @else
+                                @include('layouts.partials._admin')
+                            @endif
                         </div>
                     </div>
 

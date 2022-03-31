@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view("auth.login");
+        return view("admin.auth.login");
     }
 
     public function store(Request $request)
@@ -21,6 +21,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($request->except(['_token']), $request->remember)) {
+            $request->session()->regenerate();
             return redirect()->to("admin/dashboard");
         }
 

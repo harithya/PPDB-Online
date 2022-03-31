@@ -22,7 +22,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::guard("guest")->attempt($request->except('_token'))) {
-            return redirect()->to("/admin/dashboard");
+            return redirect()->intended('/siswa/home');
         } else {
             return back()->with(['message' => 'Username atau password salah']);
         }
