@@ -9,6 +9,7 @@ $(document).ajaxStop(function () {
 })
 
 $(".preloader").hide()
+$(".dropify").dropify();
 
 $(".btn-add").on("click", function () {
     $("#id").val("");
@@ -51,11 +52,12 @@ const validationCheck = (result, form) => {
 };
 
 const _insert = (url, data) => {
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: url,
         contentType: false,
         processData: false,
+        async: false,
         data: data,
         beforeSend: function (data) {
             resetForm();

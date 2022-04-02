@@ -8,13 +8,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" role="button">
+                <a class="nav-link" href="{{ route('siswa.pembayaran.index') }}" role="button">
                     Pembayaran
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" role="button">
-                    Bantuan
+                <a class="nav-link" href="{{ route('siswa.informasi.index') }}" role="button">
+                    Informasi
                 </a>
             </li>
         </ul>

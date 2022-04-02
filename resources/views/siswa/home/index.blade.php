@@ -12,6 +12,10 @@
                         {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button> --}}
                     </div>
+                @elseif ($siswa->status == PENGECEKAN)
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <i class="far fa-clock me-2"></i> Pengecekan pembayaran sedang berlangsung
+                    </div>
                 @else
                     <x-panduan-alert />
                 @endif

@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\PengaturanController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Siswa\AuthController;
 use App\Http\Controllers\Siswa\HomeController;
+use App\Http\Controllers\Siswa\InformasiController;
+use App\Http\Controllers\Siswa\PembayaranController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,12 @@ Route::prefix("/")->group(function () {
         Route::post("orang-tua", [HomeController::class, "orangTua"])->name("siswa.form.orang-tua");
         Route::post("alamat", [HomeController::class, "alamat"])->name("siswa.form.alamat");
         Route::post("dokumen", [HomeController::class, "dokumen"])->name("siswa.form.dokumen");
+
+        Route::prefix("pembayaran")->group(function () {
+            Route::get('/', [PembayaranController::class, "index"])->name('siswa.pembayaran.index');
+            Route::post("/", [PembayaranController::class, "store"])->name("siswa.pembayaran.store");
+        });
+        Route::get("informasi", [InformasiController::class, "index"])->name("siswa.informasi.index");
     });
 });
 

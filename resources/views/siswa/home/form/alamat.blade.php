@@ -5,7 +5,7 @@
             <div class="col-md-6 offset-md-3">
                 <div class="form-group">
                     <label>Provisi</label>
-                    <select class="form-control provinsi" name="provinsi_id">
+                    <select class="form-control select2 provinsi" name="provinsi_id">
                         <option value="">Pilih</option>
                         @foreach ($provinsi as $item)
                             <option {{ optional($alamat)->provinsi_id == $item->id ? 'selected' : '' }}
@@ -16,13 +16,13 @@
                 </div>
                 <div class="form-group">
                     <label>Kota</label>
-                    <select class="form-control kota" name="kota_id">
+                    <select class="form-control select2 kota" name="kota_id">
                         <option value="">Pilih</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Kecamatan</label>
-                    <select class="form-control kecamatan" name="kecamatan_id">
+                    <select class="form-control select2 kecamatan" name="kecamatan_id">
                         <option value="">Pilih</option>
                     </select>
                 </div>
