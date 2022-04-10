@@ -18,11 +18,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" role="button">
-                    Validasi Pembayaran
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{ route('pengaturan.index') }}" role="button">
                     Pengaturan
                 </a>

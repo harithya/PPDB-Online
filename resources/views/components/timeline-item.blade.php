@@ -1,5 +1,5 @@
 <!-- Timeline 1 -->
-<div class="timeline-box col-lg-4">
+<div class="timeline-box col-md-12">
     <div class="timeline-spacing">
         <div class="item-lable bg-primary rounded">
             <p class="text-center text-white">{{ $date }}</p>

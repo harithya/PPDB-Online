@@ -19,3 +19,17 @@ function dateTime($date)
     $res->settings(['formatFunction' => 'translatedFormat']);
     return $res->format('l, j F Y');
 }
+
+function formatDate($date)
+{
+    $res = Carbon::parse($date)->locale("id");
+    $res->settings(['formatFunction' => 'translatedFormat']);
+    return $res->format('j F Y');
+}
+
+function rupiah($angka)
+{
+
+    $hasil_rupiah = "Rp " . number_format($angka, 0, '', '.');
+    return $hasil_rupiah;
+}

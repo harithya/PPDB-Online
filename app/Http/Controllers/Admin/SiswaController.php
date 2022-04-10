@@ -26,6 +26,21 @@ class SiswaController extends Controller
 
     public function show($id)
     {
-        return view("admin.siswa.show");
+        $siswa = Siswa::with([
+            'orangTua' => function ($query) {
+                return $query->leftJoin("pekerjaan", "pekerjaan.id", "=", "orang_tua.pekerjaan_id")
+                    ->leftJoin("penghasilan", "penghasilan.id", "=", "orang_tua.penghasilan_id");
+            },
+            'alamat' => function ($query) {
+                return $query->leftJoin("kecamatan", "kecamatan.id", "=", "alamat.kecamatan_id")
+                    ->leftJoin("kota", "kota.id", "=", "kecamatan.kota_id")
+                    ->leftJoin("provinsi", "provinsi.id", "=", "kota.provinsi_id");
+            },
+            'buktiPembayaran',
+            'dokumen'
+        ])
+            ->where("id", $id)
+            ->first();
+        return view("admin.siswa.show", compact('siswa'));
     }
 }

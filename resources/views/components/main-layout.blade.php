@@ -6,11 +6,14 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         @foreach ($badge as $key => $item)
+                            @php
+                                $title = ucwords(str_replace('-', ' ', $item));
+                            @endphp
                             @if (count($badge) == $key + 1)
-                                <li class="breadcrumb-item active">{{ ucwords(str_replace('-', ' ', $item)) }}</li>
+                                <li class="breadcrumb-item active">{{ strlen($title) === 1 ? 'Detail' : $title }}</li>
                             @else
                                 <li class="breadcrumb-item"><a
-                                        href="javascript: void(0);">{{ ucwords(str_replace('-', ' ', $item)) }}</a>
+                                        href="javascript: void(0);">{{ strlen($title) === 1 ? 'Detail' : $title }}</a>
                                 </li>
                             @endif
                         @endforeach

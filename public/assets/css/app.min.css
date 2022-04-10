@@ -3644,3 +3644,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
     object-fit: contain !important;
     border-radius: 0px !important;
 }
+
+.avatar-lg {
+    object-fit: cover;
+}

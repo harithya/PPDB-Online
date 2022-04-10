@@ -14,4 +14,9 @@ class OrangTua extends Model
     protected $guarded = ['id'];
 
     public $timestamps = false;
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class);
+    }
 }
