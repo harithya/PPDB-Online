@@ -16,6 +16,8 @@
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <i class="far fa-clock me-2"></i> Pengecekan pembayaran sedang berlangsung
                     </div>
+                @elseif ($siswa->status == DITERIMA)
+                    <x-success-alert />
                 @else
                     <x-panduan-alert />
                 @endif

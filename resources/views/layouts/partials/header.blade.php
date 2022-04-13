@@ -80,7 +80,8 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="d-none d-xl-inline-block ms-1">Harithya Wisesa</span>
+                                <span
+                                    class="d-none d-xl-inline-block ms-1">{{ user('web')->nama ?? user('guest')->nama }}</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -98,7 +99,8 @@
                                         class="bx bx-lock-open font-size-16 align-middle me-1"></i>
                                     Lock screen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#"><i
+                                <a class="dropdown-item text-danger"
+                                    href="{{ user('guest')->id ? route('siswa.auth.logout') : route('login.logout') }}"><i
                                         class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
                                     Logout</a>
                             </div>

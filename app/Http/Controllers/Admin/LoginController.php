@@ -27,4 +27,10 @@ class LoginController extends Controller
 
         return back()->with(['message' => 'Username atau password salah']);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->to("admin/login");
+    }
 }

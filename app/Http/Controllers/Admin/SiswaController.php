@@ -43,4 +43,10 @@ class SiswaController extends Controller
             ->first();
         return view("admin.siswa.show", compact('siswa'));
     }
+
+    public function update(Request $request, $id)
+    {
+        Siswa::find($id)->update(['status' => $request->status]);
+        return redirect()->to("admin/siswa")->with("success", "Status siswa berhasil diubah");
+    }
 }

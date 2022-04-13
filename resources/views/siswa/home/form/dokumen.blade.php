@@ -7,7 +7,7 @@
                     <label>Pas Foto</label>
                     <input type="file" name="pas_foto" class="form-control file-input" id="pas_foto">
                     <div class="img-preview">
-                        <img src="{{ $dokumen->pas_foto? url('storage/' . $dokumen->pas_foto): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
+                        <img src="{{ optional($dokumen)->pas_foto? url('storage/' . optional($dokumen)->pas_foto): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
                             id="preview_pas_foto" class="{{ optional($dokumen)->pas_foto ? 'img-thumbnail' : '' }}">
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                     <label>Ijazah</label>
                     <input type="file" name="ijazah" class="form-control file-input" id="ijazah">
                     <div class="img-preview">
-                        <img src="{{ $dokumen->ijazah? url('storage/' . $dokumen->ijazah): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
+                        <img src="{{ optional($dokumen)->ijazah? url('storage/' . optional($dokumen)->ijazah): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
                             id="preview_ijazah" class="{{ optional($dokumen)->ijazah ? 'img-thumbnail' : '' }}">
                     </div>
                 </div>

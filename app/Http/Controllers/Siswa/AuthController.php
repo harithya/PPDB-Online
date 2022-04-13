@@ -51,4 +51,10 @@ class AuthController extends Controller
         ));
         return back()->with('message', 'Selamat akun anda berhasil dibuat');
     }
+
+    public function logout()
+    {
+        Auth::guard("guest")->logout();
+        return redirect()->to("/");
+    }
 }
