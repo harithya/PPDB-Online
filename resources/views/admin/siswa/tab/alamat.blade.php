@@ -4,20 +4,21 @@
             <table class="table">
                 <tr>
                     <th>Provinsi</th>
-                    <td>{{ $siswa->alamat->provinsi }}</td>
+                    <td>{{ optional($siswa->alamat)->provinsi }}</td>
                 </tr>
                 <tr>
                     <th>Kota / Kabupaten</th>
-                    <td>{{ $siswa->alamat->kota }}</td>
+                    <td>{{ optional($siswa->alamat)->kota }}</td>
                 </tr>
                 <tr>
                     <th>Kecamatan</th>
-                    <td>{{ $siswa->alamat->kecamatan }}</td>
+                    <td>{{ optional($siswa->alamat)->kecamatan }}</td>
                 </tr>
                 <tr>
                     <th>Alamat Lengkap</th>
-                    <td>RT {{ $siswa->alamat->rt }} RW {{ $siswa->alamat->rw }}, {{ $siswa->alamat->alamat }},
-                        Kode Pos {{ $siswa->alamat->kode_pos }}</td>
+                    <td>RT {{ optional($siswa->alamat)->rt }} RW {{ optional($siswa->alamat)->rw }},
+                        {{ optional($siswa->alamat)->alamat }},
+                        Kode Pos {{ optional($siswa->alamat)->kode_pos }}</td>
                 </tr>
             </table>
         </div>

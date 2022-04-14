@@ -100,7 +100,7 @@
                                     Lock screen</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger"
-                                    href="{{ user('guest')->id ? route('siswa.auth.logout') : route('login.logout') }}"><i
+                                    href="{{ auth()->guard('guest')->check()? route('siswa.auth.logout'): route('login.logout') }}"><i
                                         class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
                                     Logout</a>
                             </div>

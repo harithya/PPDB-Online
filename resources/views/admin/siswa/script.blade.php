@@ -7,7 +7,14 @@
             processing: true,
             serverSide: true,
             responsive: true,
-            ajax: BaseUrl,
+            ajax: {
+                url: BaseUrl,
+                data: {
+                    status: "{{ request()->status }}",
+                    penghasilan: "{{ request()->penghasilan }}",
+                    pekerjaan: "{{ request()->pekerjaan }}",
+                }
+            },
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -38,10 +45,16 @@
                 {
                     "mData": "status",
                     render: function(data, type, row) {
-                        if (data == 0) {
-                            return `<div class='badge bg-warning'>Belum Diterima</div>`
-                        } else if (data == 1) {
-                            return "Perempuan"
+                        if (data == "{{ BARU }}") {
+                            return `<div class='badge bg-secondary'>Pendaftar Baru</div>`
+                        } else if (data == "{{ MENUNGGU }}") {
+                            return "<div class='badge bg-info'>Belum Melakukan Pembayaran</div>"
+                        } else if (data == "{{ PENGECEKAN }}") {
+                            return "<div class='badge bg-warning'>Menunggu Pengecekan</div>"
+                        } else if (data == "{{ DITERIMA }}") {
+                            return "<div class='badge bg-success'>Diterima</div>"
+                        } else if (data == "{{ DITOLAK }}") {
+                            return "<div class='badge bg-danger'>Ditolak</div>"
                         } else {
                             return "-"
                         }

@@ -33,3 +33,12 @@ function rupiah($angka)
     $hasil_rupiah = "Rp " . number_format($angka, 0, '', '.');
     return $hasil_rupiah;
 }
+
+function selected($value, $compare)
+{
+    $compare = request()->get($compare) === null ? '' : intval(request()->get($compare));
+
+    if ($value === $compare) {
+        return "selected";
+    }
+}

@@ -4,19 +4,20 @@
             <table class="table">
                 <tr>
                     <th>Nama Pengirim</th>
-                    <td>{{ $siswa->buktiPembayaran->nama_pengirim }}</td>
+                    <td>{{ optional($siswa->buktiPembayaran)->nama_pengirim }}</td>
                 </tr>
                 <tr>
                     <th>Jumlah</th>
-                    <td>{{ rupiah($siswa->buktiPembayaran->jumlah) }}</td>
+                    <td>{{ rupiah(optional($siswa->buktiPembayaran)->jumlah) }}</td>
                 </tr>
                 <tr>
                     <th>Tanggal</th>
-                    <td>{{ formatDate($siswa->buktiPembayaran->tanggal) }}</td>
+                    <td>{{ formatDate(optional($siswa->buktiPembayaran)->tanggal) }}</td>
                 </tr>
                 <tr>
                     <th>Nomor Rekening</th>
-                    <td>{{ $siswa->buktiPembayaran->no_rekening }} / {{ $siswa->buktiPembayaran->bank_pengirim }}
+                    <td>{{ optional($siswa->buktiPembayaran)->no_rekening }} /
+                        {{ optional($siswa->buktiPembayaran)->bank_pengirim }}
                     </td>
                 </tr>
                 <tr>
@@ -24,9 +25,9 @@
                     <td>
                         <div class="form-group">
                             <div class="img-preview">
-                                <img src="{{ $siswa->buktiPembayaran->img_bukti? url('storage/' . $siswa->buktiPembayaran->img_bukti): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
+                                <img src="{{ optional($siswa->buktiPembayaran)->img_bukti? url('storage/' . optional($siswa->buktiPembayaran)->img_bukti): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
                                     id="preview_bukti_pembayaran"
-                                    class="{{ optional($siswa)->buktiPembayaran->img_bukti ? 'img-thumbnail' : '' }}">
+                                    class="{{ optional($siswa->buktiPembayaran)->img_bukti ? 'img-thumbnail' : '' }}">
                             </div>
                         </div>
                     </td>

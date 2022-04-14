@@ -4,14 +4,14 @@
             <label>Pas Foto</label>
             <div class="img-preview">
                 <img src="{{ optional($siswa->dokumen)->pas_foto? url('storage/' . optional($siswa->dokumen)->pas_foto): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
-                    id="preview_pas_foto" class="{{ optional($siswa)->dokumen->pas_foto ? 'img-thumbnail' : '' }}">
+                    id="preview_pas_foto" class="{{ optional($siswa->dokumen)->pas_foto ? 'img-thumbnail' : '' }}">
             </div>
         </div>
         <div class="form-group">
             <label>Ijazah</label>
             <div class="img-preview">
                 <img src="{{ optional($siswa->dokumen)->ijazah? url('storage/' . optional($siswa->dokumen)->ijazah): 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
-                    id="preview_ijazah" class="{{ optional($siswa)->dokumen->ijazah ? 'img-thumbnail' : '' }}">
+                    id="preview_ijazah" class="{{ optional($siswa->dokumen)->ijazah ? 'img-thumbnail' : '' }}">
             </div>
         </div>
     </div>

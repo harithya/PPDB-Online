@@ -15,7 +15,6 @@
                         </div>
                         <p class="card-title-desc">segera lakukan pengecekan pada siswa pendaftar</p>
 
-
                         @if ($siswa->status == MENUNGGU)
                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
                                 <i class="fas fa-info-circle me-2"></i>Belum melakukan pembayaran
@@ -23,6 +22,14 @@
                         @elseif ($siswa->status == PENGECEKAN)
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <i class="far fa-clock me-2"></i> Harap segera melakukan persetujuan atau penolakan
+                            </div>
+                        @elseif ($siswa->status == DITERIMA)
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="fas fa-check me-2"></i> Siswa bersangkutan telah diterima
+                            </div>
+                        @elseif ($siswa->status == DITOLAK)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="fas fa-times me-2"></i> Siswa bersangkutan ditolak
                             </div>
                         @endif
                         <!-- Nav tabs -->
