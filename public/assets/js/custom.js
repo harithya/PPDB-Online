@@ -145,8 +145,7 @@ const _request = (param) => {
             }
             if (param.redirect == true) {
                 // window.history.back();
-                const old = document.referrer;
-                window.location.href = old
+                location.reload();
             }
         },
         error: function (data) {

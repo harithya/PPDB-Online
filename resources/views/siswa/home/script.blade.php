@@ -1,5 +1,6 @@
 <script>
     BaseUrl = $('meta[name="url"]').attr("content") + '/siswa/';
+    const condition = {{ user('guest')->status > MENUNGGU }}
 
     $(document).ready(function() {
         $("#form-horizontal").steps({
@@ -49,26 +50,34 @@
     })
 
     const postData = (data, selector, url, withImage = undefined) => {
-        return $.ajax({
-            method: "POST",
-            data: data,
-            url: BaseUrl + url,
-            contentType: withImage,
-            processData: withImage,
-            async: false,
-            beforeSend: function() {
-                resetForm()
-            },
-            success: function(res) {
-                _alert("success", res.message)
-                return true
-            },
-            error: function(data) {
-                const result = data.responseJSON;
-                validationCheck(result, selector);
-                return false;
+        if (condition) {
+            return {
+                responseJSON: {
+                    status: true
+                }
             }
-        })
+        } else {
+            return $.ajax({
+                method: "POST",
+                data: data,
+                url: BaseUrl + url,
+                contentType: withImage,
+                processData: withImage,
+                async: false,
+                beforeSend: function() {
+                    resetForm()
+                },
+                success: function(res) {
+                    _alert("success", res.message)
+                    return true
+                },
+                error: function(data) {
+                    const result = data.responseJSON;
+                    validationCheck(result, selector);
+                    return false;
+                }
+            })
+        }
     }
 
     @if ($alamat != null)
@@ -80,4 +89,9 @@
         }
         onLoad();
     @endif
+
+
+    if (condition) {
+        $('.form-control').attr('disabled', true);
+    }
 </script>
