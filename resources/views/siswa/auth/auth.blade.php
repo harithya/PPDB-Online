@@ -13,7 +13,7 @@
         <div class="if-panel">
             <div class="if-panel-inner">
                 <div class="if-brand">
-                    <img src="{{ asset() }}kodinger.jpg" alt="logo">
+                    <img src="{{ asset('login') }}kodinger.jpg" alt="logo">
                 </div>
                 <div class="if-text">
                     <h1>Welcome to <b>Kodinger</b></h1>

@@ -23,7 +23,7 @@ body {
     --color-grey: #f9f9f9;
     --color-dark: #000;
     --color-semidark: #9b9b9b;
-    --color-shadow: rgba(0, 129, 198, 0.45);
+    --color-shadow: rgba(59, 93, 231, 0.45);
 
     font-family: "Segoe UI";
     font-size: 14px;
@@ -115,7 +115,7 @@ body {
 
 .if .if-main {
     position: relative;
-    background-image: url("background.jpg");
+    background-image: url("https://images.pexels.com/photos/5427859/pexels-photo-5427859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
     background-position: 0 0%;
     animation-name: backgroundWalk;
@@ -300,7 +300,7 @@ body {
 .if .if-input {
     background-color: var(--color-grey);
     color: var(--color-dark);
-    border: none;
+    border: 1px solid #ced4da;
     border-radius: 3px;
     padding: 15px 20px;
     width: 100%;
