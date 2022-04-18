@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Siswa;
 
 use App\Http\Controllers\Controller;
 use App\Models\BuktiPembayaran;
+use App\Models\Notifikasi;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,14 @@ class PembayaranController extends Controller
             'tanggal' => now(),
         ]);
 
-        Siswa::find(user("guest")->id)->update(['status' => PENGECEKAN]);
+        $siswa = Siswa::find(user("guest")->id);
+        Notifikasi::create([
+            'tanggal' => now(),
+            'text' => $siswa->nama . ' melakukan pembayaran sebesar ' . rupiah($request->jumlah),
+            'status' => AUTH_PEMBAYARAN
+        ]);
+
+        $siswa->update(['status' => PENGECEKAN]);
         BuktiPembayaran::updateOrCreate(['siswa_id' => user("guest")->id], $data);
         return response()->json(['status' => true, "message" => "Berhasil mengubah data"]);
     }

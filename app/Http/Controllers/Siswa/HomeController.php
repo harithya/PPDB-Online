@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Siswa;
 use App\Http\Controllers\Controller;
 use App\Models\Alamat;
 use App\Models\Dokumen;
+use App\Models\Notifikasi;
 use App\Models\OrangTua;
 use App\Models\Pekerjaan;
 use App\Models\Penghasilan;
@@ -122,7 +123,14 @@ class HomeController extends Controller
             Dokumen::updateOrCreate(['siswa_id' => user("guest")->id], ["ijazah" => $data->ijazah]);
         }
 
-        Siswa::find(user('guest')->id)->update(['status' => MENUNGGU]);
+        $siswa  = Siswa::find(user('guest')->id);
+        $siswa->update(['status' => MENUNGGU]);
+
+        Notifikasi::create([
+            'tanggal' => now(),
+            'text' => $siswa->nama . ' telah melengkapi formulir pendaftaran',
+            'status' => AUTH_FORMULIR
+        ]);
         return response()->json(['status' => true, "message" => "Berhasil mengubah data"]);
     }
 }

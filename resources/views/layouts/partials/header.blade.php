@@ -11,7 +11,8 @@
     <meta name="url" content="{{ url()->to('/') }}">
     <meta name="base-url" content="{{ url()->to('admin') }}">
     <!-- App favicon -->
-    <link rel=" shortcut icon" href="{{ asset('assets') }}/images/favicon.ico">
+    <link rel=" shortcut icon"
+        href="https://rekreartive.com/wp-content/uploads/2019/04/Logo-Tut-Wuri-Handayani-PNG-Warna.png">
     <!-- DataTables -->
     <link href="{{ asset('assets') }}/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         type="text/css" />
@@ -22,9 +23,6 @@
     <!-- Responsive datatable examples -->
     <link href="{{ asset('assets') }}/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
         rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet"
-        href="https://simpeg.stit-alhidayah.ac.id/assets/node_modules/dropify/dist/css/dropify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
 
@@ -51,7 +49,8 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets') }}/images/logo-sm-dark.png" alt="" height="20">
+                                    <img src="https://rekreartive.com/wp-content/uploads/2019/04/Logo-Tut-Wuri-Handayani-PNG-Warna.png"
+                                        alt="" height="40">
                                 </span>
                                 <span class="logo-lg">
                                     <img src="{{ asset('assets') }}/logo.svg" alt="" height="35"

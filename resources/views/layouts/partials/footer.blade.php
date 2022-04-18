@@ -56,7 +56,6 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 
 <script src="{{ asset('assets') }}/js/app.js"></script>
 <script src="{{ asset('assets') }}/js/custom.js?v={{ microtime() }}"></script>

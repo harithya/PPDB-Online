@@ -42,3 +42,10 @@ function selected($value, $compare)
         return "selected";
     }
 }
+
+function notificationDate($date)
+{
+    $res = Carbon::parse($date)->locale("id");
+    $res->settings(['formatFunction' => 'translatedFormat']);
+    return $res->format('d M');
+}

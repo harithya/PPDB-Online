@@ -5,16 +5,17 @@
     <x-main-layout title="Dashboard">
         <div class="row">
             <div class="col-md-3">
-                <x-dashboard-info title="Pendaftar" value="150" type="primary" icon="mdi-account-multiple" />
+                <x-dashboard-info title="Pendaftar" value="{{ $semuanya }}" type="primary"
+                    icon="mdi-account-multiple" />
             </div>
             <div class="col-md-3">
-                <x-dashboard-info title="Diterima" value="120" type="success" icon="mdi-check-circle" />
+                <x-dashboard-info title="Diterima" value="{{ $diterima }}" type="success" icon="mdi-check-circle" />
             </div>
             <div class="col-md-3">
-                <x-dashboard-info title="Ditolak" value="30" type="danger" icon="mdi-alert-circle" />
+                <x-dashboard-info title="Ditolak" value="{{ $ditolak }}" type="danger" icon="mdi-alert-circle" />
             </div>
             <div class="col-md-3">
-                <x-dashboard-info title="Pembayaran" value="50" type="warning" icon="mdi-cash-multiple" />
+                <x-dashboard-info title="Menunggu" value="{{ $pengecekan }}" type="warning" icon="mdi-clock" />
             </div>
         </div>
         <div class="row">
@@ -36,86 +37,33 @@
                         </p>
 
                         <ul class="list-unstyled activity-wid">
-                            <li class="activity-list">
-                                <div class="activity-icon avatar-xs">
-                                    <span class="avatar-title bg-soft-primary text-primary rounded-circle">
-                                        <i class="mdi mdi-calendar-edit"></i>
-                                    </span>
-                                </div>
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3">
-                                        <h5 class="font-size-14">20 Jan <i
-                                                class="mdi mdi-arrow-right text-primary align-middle ms-2"></i>
-                                        </h5>
+                            @foreach ($notifikasi as $item)
+                                <li class="activity-list">
+                                    <div class="activity-icon avatar-xs">
+                                        <span class="avatar-title bg-soft-primary text-primary rounded-circle">
+                                            @if ($item->status === AUTH_PENDAFTARAN)
+                                                <i class="mdi mdi-account-plus"></i>
+                                            @elseif ($item->status === AUTH_FORMULIR)
+                                                <i class="mdi mdi-file"></i>
+                                            @else
+                                                <i class="mdi mdi-currency-usd"></i>
+                                            @endif
+                                        </span>
                                     </div>
-                                    <div class="flex-1">
-                                        <div>
-                                            Responded to need “Volunteer Activities"
+                                    <div class="d-flex align-items-start">
+                                        <div class="me-3">
+                                            <h5 class="font-size-14">{{ notificationDate($item->tanggal) }}<i
+                                                    class="mdi mdi-arrow-right text-primary align-middle ms-2"></i>
+                                            </h5>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div>
+                                                {{ $item->text }}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-
-                            <li class="activity-list">
-                                <div class="activity-icon avatar-xs">
-                                    <span class="avatar-title bg-soft-primary text-primary rounded-circle">
-                                        <i class="mdi mdi-account-multiple-outline"></i>
-                                    </span>
-                                </div>
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3">
-                                        <h5 class="font-size-14">23 Jan <i
-                                                class="mdi mdi-arrow-right text-primary align-middle ms-2"></i>
-                                        </h5>
-                                    </div>
-                                    <div class="flex-1">
-                                        <div>
-                                            Added an interest “Volunteer Activities”
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="activity-list">
-                                <div class="activity-icon avatar-xs">
-                                    <span class="avatar-title bg-soft-primary text-primary rounded-circle">
-                                        <i class="mdi mdi-square-edit-outline"></i>
-                                    </span>
-                                </div>
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3">
-                                        <h5 class="font-size-14">24 Jan <i
-                                                class="mdi mdi-arrow-right text-primary align-middle ms-2"></i>
-                                        </h5>
-                                    </div>
-                                    <div class="flex-1 d-flex">
-                                        <div>
-                                            Everyone realizes why a new common language.. <a href="#">Read
-                                                more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="activity-list">
-                                <div class="activity-icon avatar-xs">
-                                    <span class="avatar-title bg-soft-primary text-primary rounded-circle">
-                                        <i class="mdi mdi-account-multiple-outline"></i>
-                                    </span>
-                                </div>
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3">
-                                        <h5 class="font-size-14">26 Jan <i
-                                                class="mdi mdi-arrow-right text-primary align-middle ms-2"></i>
-                                        </h5>
-                                    </div>
-                                    <div class="flex-1">
-                                        <div>
-                                            Joined the group “Boardsmanship Forum”
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

@@ -16,7 +16,7 @@
             </div>
             <div class="col-2">
                 <div>
-                    <img src="{{ asset('assets/success.svg') }}" alt="" class="img-fluid mx-auto d-block">
+                    <img src="{{ asset('assets/success.svg') }}" alt="" class="img-fluid mx-auto  d-block">
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Siswa;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notifikasi;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +50,13 @@ class AuthController extends Controller
                 'id' => $check ? $check->id + 1 : 1
             ]
         ));
-        return back()->with('message', 'Selamat akun anda berhasil dibuat');
+
+        Notifikasi::create([
+            'tanggal' => now(),
+            'text' => 'Ada pendaftar baru bernama ' . $request->nama,
+            'status' => AUTH_PENDAFTARAN
+        ]);
+        return redirect('/')->with('message', 'Selamat akun anda berhasil dibuat');
     }
 
     public function logout()

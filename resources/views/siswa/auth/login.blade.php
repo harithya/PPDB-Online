@@ -1,4 +1,9 @@
 <x-guest-auth-layout>
+    @if (session()->get('message'))
+        <script>
+            alert("{{ session()->get('message') }}")
+        </script>
+    @endif
     <form id="login-form" method="POST" action="{{ route('siswa.auth.login.store') }}" class="active">
         @csrf
         <div class="if-group">
