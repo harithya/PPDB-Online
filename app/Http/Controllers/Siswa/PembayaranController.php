@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Siswa;
 use App\Http\Controllers\Controller;
 use App\Models\BuktiPembayaran;
 use App\Models\Notifikasi;
+use App\Models\Pengaturan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,9 @@ class PembayaranController extends Controller
 {
     public function index()
     {
+        $pengaturan = Pengaturan::first();
         $bukti = BuktiPembayaran::where("siswa_id", user("guest")->id)->first();
-        return view("siswa.pembayaran.index", compact('bukti'));
+        return view("siswa.pembayaran.index", compact('bukti', 'pengaturan'));
     }
 
     public function store(Request $request)

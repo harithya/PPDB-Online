@@ -8,10 +8,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h4 class="card-title">Detail Lengkap Siswa</h4>
-                            <div class="d-flex">
-                                <button class="btn btn-primary  btn-sm"><i class="fas fa-download me-2"></i> Unduh
-                                    identitas</button>
-                            </div>
+
                         </div>
                         <p class="card-title-desc">segera lakukan pengecekan pada siswa pendaftar</p>
 
@@ -87,21 +84,19 @@
                             </div>
                         </div>
 
-                        @if ($siswa->status === PENGECEKAN)
-                            <div class="d-flex justify-content-end">
-                                <form action="{{ url('admin/siswa/' . $siswa->id) }}" class="float-right"
-                                    onsubmit="return confirm('Apakah yakin?')" method="POST">
-                                    @csrf
-                                    @method("PUT")
-                                    <button name="status" value="{{ DITERIMA }}" class="btn btn-danger me-3">Tolak <i
-                                            class="fas fa-times ms-2"></i></button>
-                                    <button name="status" value="{{ DITOLAK }}" class="btn btn-success ">
-                                        Terima
-                                        <i class="fas fa-check ms-2"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        @endif
+                        <div class="d-flex justify-content-end">
+                            <form action="{{ url('admin/siswa/' . $siswa->id) }}" class="float-right"
+                                onsubmit="return confirm('Apakah yakin?')" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button name="status" value="{{ DITOLAK }}" class="btn btn-danger me-3">Tolak <i
+                                        class="fas fa-times ms-2"></i></button>
+                                <button name="status" value="{{ DITERIMA }}" class="btn btn-success ">
+                                    Terima
+                                    <i class="fas fa-check ms-2"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

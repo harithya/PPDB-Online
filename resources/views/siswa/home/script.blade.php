@@ -1,6 +1,6 @@
 <script>
     BaseUrl = $('meta[name="url"]').attr("content") + '/siswa/';
-    const condition = {{ user('guest')->status > MENUNGGU }}
+    const condition = {{ user('guest')->status > MENUNGGU ? 'true' : 'false' }}
 
     $(document).ready(function() {
         $("#form-horizontal").steps({
@@ -8,8 +8,6 @@
             bodyTag: "fieldset",
             transitionEffect: "fade",
             onStepChanging: (e, currentIndex) => {
-
-                $('.dropify').dropify();
                 switch (currentIndex) {
                     case 0:
                         const identitasData = $("#form-identitas").serialize();

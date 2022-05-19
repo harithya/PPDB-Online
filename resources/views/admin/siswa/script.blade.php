@@ -74,13 +74,25 @@
                     "mData": "id",
                     render: function(data, type, row) {
                         return `<div class="dropdown crud-dropdown">
-                            <a href="${BaseUrl}/${data}" class="btn btn-transparent dropdown-toggle" type="button">
-                            <i class="fas fa-search"></i>
-                            </a>
-                        </div>`;
+                                <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenuButton"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fas fa-list-ul"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="${BaseUrl+"/"+data}"><i class="fas fa-search    me-2"></i> Detail</a>
+                                <a class="dropdown-item delete" data-id="${data}"  href="#"> <i class="fas fa-trash  me-2"></i> Delete</a>
+                                </div>
+                            </div>`;
                     }
                 },
             ]
+        });
+
+        // delete data
+        $("#table").on('click', '.delete', function(e) {
+            e.preventDefault();
+            const id = $(this).attr("data-id");
+            const url = BaseUrl + "/" + id;
+            _delete(url);
         });
     })
 </script>

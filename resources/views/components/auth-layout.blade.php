@@ -3,7 +3,7 @@
         <div class="col-md-8 col-lg-6 col-xl-5">
             <div class="card overflow-hidden">
                 <div class="bg-login text-center"
-                    style="background: url(https://img.beritasatu.com/cache/investor/798x449-2/20170714071818545.jpg);">
+                    style="background: url(https://jabar.pojoksatu.id/wp-content/uploads/2015/08/pelajar-smp.jpg); background-position: center; background-size: cover;">
                     <div class="bg-login-overlay"></div>
                     <div class="position-relative">
                         <h5 class="text-white font-size-20">{{ $title }}</h5>

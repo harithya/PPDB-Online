@@ -47,6 +47,7 @@
 <script src="{{ asset('assets') }}/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="{{ asset('assets') }}/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 <!-- Responsive examples -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
 <script src="https://simpeg.stit-alhidayah.ac.id/assets/node_modules/dropify/dist/js/dropify.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
 <!-- form wizard -->
@@ -56,19 +57,11 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
 <script src="{{ asset('assets') }}/js/app.js"></script>
 <script src="{{ asset('assets') }}/js/custom.js?v={{ microtime() }}"></script>
 
 
 @stack('script')
-{{-- <script>
-    // $(document).ready(function() {
-    //     setTimeout(() => {
-    //         $(".btn-add").appendTo("#datatable_wrapper .col-md-6:eq(0)")
-    //     }, 500);
-    // })
-</script> --}}
 
 
 </body>

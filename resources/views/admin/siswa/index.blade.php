@@ -59,8 +59,9 @@
                                 <a href="{{ url('admin/siswa') }}" class="btn btn-danger ms-2"><i
                                         class="fas fa-redo me-2"></i> Reset
                                     Filter</a>
-                                <button class="btn btn-success ms-2"><i class="fas fa-file-excel me-2"></i> Export
-                                    Excel</button>
+                                <a href="{{ url('admin/siswa/export/excel?status=' . request()->status . '&pekerjaan=' . request()->pekerjaan . '&penghasilan=' . request()->penghasilan) }}"
+                                    class="btn btn-success ms-2"><i class="fas fa-file-excel me-2"></i> Export
+                                    Excel</a>
                             </div>
                         </form>
                     </div>
@@ -75,7 +76,7 @@
                                 </button>
                             </div>
                         @endif
-                        <table class="table" id="table">
+                        <table class="table table-responsive" id="table">
                             <thead>
                                 <tr>
                                     <th>NO</th>
@@ -92,6 +93,12 @@
                 </div>
             </div>
         </div>
+        <style>
+            .dropdown-menu {
+                left: -100px !important;
+            }
+
+        </style>
     </x-main-layout>
 @endsection
 

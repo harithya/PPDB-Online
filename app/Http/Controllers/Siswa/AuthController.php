@@ -47,7 +47,8 @@ class AuthController extends Controller
             $request->except("password"),
             [
                 'password' => bcrypt($request->password),
-                'id' => $check ? $check->id + 1 : 1
+                'id' => $check ? $check->id + 1 : 1,
+                'tanggal' => now()
             ]
         ));
 

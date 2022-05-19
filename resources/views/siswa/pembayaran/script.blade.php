@@ -1,5 +1,5 @@
 <script>
-    BaseUrl = $('meta[name="url"]').attr("content") + '/siswa/pembayaran/';
+    BaseUrl = $('meta[name="url"]').attr("content") + '/siswa/pembayaran';
 
     $("#formAdd").on('submit', function(e) {
         e.preventDefault();
@@ -14,10 +14,10 @@
         });
         // refresh page
     });
-
-
-    const condition = {{ user('guest')->status > MENUNGGU }}
-    if (condition) {
-        $('.form-control').attr('disabled', true);
-    }
 </script>
+
+@if (user('guest')->status > MENUNGGU)
+    <script>
+        $('.form-control').attr('disabled', true);
+    </script>
+@endif

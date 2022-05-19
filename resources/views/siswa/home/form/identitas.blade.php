@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" value="0"
-                                {{ optional($siswa)->jenis_kelamin === 0 ? 'checked' : '' }} name="jenis_kelamin"
+                                {{ optional($siswa)->jenis_kelamin === 2 ? 'checked' : '' }} name="jenis_kelamin"
                                 id="radio-perempuan">
                             <label class="form-check-label" for="radio-perempuan">
                                 Perempuan

@@ -8,15 +8,18 @@ use App\Models\Dokumen;
 use App\Models\Notifikasi;
 use App\Models\OrangTua;
 use App\Models\Pekerjaan;
+use App\Models\Pengaturan;
 use App\Models\Penghasilan;
 use App\Models\Provinsi;
 use App\Models\Siswa;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $data['pengaturan'] = Pengaturan::first();
         $data['siswa'] = Siswa::find(user("guest")->id);
         $data['pekerjaan'] = Pekerjaan::all();
         $data['penghasilan'] = Penghasilan::all();
@@ -132,5 +135,11 @@ class HomeController extends Controller
             'status' => AUTH_FORMULIR
         ]);
         return response()->json(['status' => true, "message" => "Berhasil mengubah data"]);
+    }
+
+    public function pdf()
+    {
+        $siswa = Siswa::find(user('guest')->id);
+        return view("siswa.home.pdf", compact("siswa"));
     }
 }

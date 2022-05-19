@@ -2,7 +2,8 @@
     <div class="col-md-6 offset-md-3">
 
         {{-- {{ $siswa->dokumen->ijazah? url('storage/' . $siswa->dokumen->ijazah): 'https://indonesiamengajar.org/images/placeholder.jpg' }} --}}
-        <img src="https://indonesiamengajar.org/images/placeholder.jpg" class="avatar-lg mx-auto  rounded-circle">
+        <img src="{{ optional($siswa->dokumen)->pas_foto ? url('storage/' . optional($siswa->dokumen)->pas_foto) : 'https://indonesiamengajar.org/images/placeholder.jpg' }}"
+            class="avatar-lg mx-auto  rounded-circle">
         <div class="mt-3">
             <table class="table">
                 <tr>

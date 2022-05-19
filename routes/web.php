@@ -10,6 +10,7 @@ use App\Http\Controllers\Siswa\AuthController;
 use App\Http\Controllers\Siswa\HomeController;
 use App\Http\Controllers\Siswa\InformasiController;
 use App\Http\Controllers\Siswa\PembayaranController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,7 @@ Route::prefix("/")->group(function () {
     Route::post("register", [AuthController::class, "registerStore"])->name("siswa.auth.register.store");
     Route::prefix("siswa")->middleware('guest.check')->group(function () {
         Route::get("home", [HomeController::class, "index"])->name("siswa.home.index");
+        Route::get("pdf", [HomeController::class, "pdf"])->name("siswa.pdf.show");
         Route::post("identitas", [HomeController::class, "identitas"])->name("siswa.form.identitas");
         Route::post("orang-tua", [HomeController::class, "orangTua"])->name("siswa.form.orang-tua");
         Route::post("alamat", [HomeController::class, "alamat"])->name("siswa.form.alamat");
@@ -52,6 +54,8 @@ Route::prefix("admin")->group(function () {
             Route::get("/", "index")->name("siswa.index");
             Route::get("/{id}", "show")->name("siswa.show");
             Route::put("/{id}", "update")->name("siswa.update");
+            Route::get('export/excel', 'export')->name('siswa.export');
+            Route::delete('/{id}', 'destroy')->name('siswa.destroy');
         });
         Route::prefix("pengaturan")->group(function () {
             Route::get("/", [PengaturanController::class, "index"])->name("pengaturan.index");
@@ -65,8 +69,16 @@ Route::prefix("admin")->group(function () {
     });
 });
 
+Route::get("test", function () {
+    return view("siswa.home.pdf");
+});
 
 Route::prefix("ajax")->controller(AjaxController::class)->group(function () {
     Route::get("kota/{id}", "kota");
     Route::get("kecamatan/{id}", "kecamatan");
+});
+
+
+Route::get("storage-link", function () {
+    return Artisan::call("storage:link");
 });
