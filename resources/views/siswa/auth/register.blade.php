@@ -24,7 +24,7 @@
             @enderror
         </div>
         <button class="if-btn">
-            Sign In
+            Register
         </button>
     </form>
 

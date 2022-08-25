@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $data['notifikasi'] = Notifikasi::orderBy("id", "desc")
-            ->limit(7)
+            ->limit(5)
             ->get();
         $data['semuanya'] = Siswa::count();
         $data['diterima'] = Siswa::where("status", DITERIMA)->count();

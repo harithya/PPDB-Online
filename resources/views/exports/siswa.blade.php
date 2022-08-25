@@ -1,7 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th align="center" style="font-weight: bold;" colspan="13">Data Siswa Pendaftar SMAN 10 Ciamis</th>
+            <th align="center" style="font-weight: bold;" colspan="13">Data Siswa Pendaftar SMPN 10 Ciamis</th>
         </tr>
         <tr>
             <th align="center" style="font-weight: bold;" colspan="13">Penerimaan Peserta Didik Baru 2022</th>

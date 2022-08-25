@@ -23,7 +23,7 @@
             @enderror
         </div>
         <button class="if-btn">
-            Sign In
+            Login
         </button>
     </form>
 

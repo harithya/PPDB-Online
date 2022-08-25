@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-    <x-auth-layout title="Welcome Back !" subtitle="Sign in to continue to PPDB.">
+    <x-auth-layout title="Welcome Back !" subtitle="Sign in to continue to Dinsos Penduduk.">
         <div class="card-body pt-5">
             <div class="p-2">
                 @if (session()->get('message'))

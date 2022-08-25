@@ -5,8 +5,7 @@
     <x-main-layout title="Dashboard">
         <div class="row">
             <div class="col-md-3">
-                <x-dashboard-info title="Pendaftar" value="{{ $semuanya }}" type="primary"
-                    icon="mdi-account-multiple" />
+                <x-dashboard-info title="Pendaftar" value="{{ $semuanya }}" type="primary" icon="mdi-account-multiple" />
             </div>
             <div class="col-md-3">
                 <x-dashboard-info title="Diterima" value="{{ $diterima }}" type="success" icon="mdi-check-circle" />

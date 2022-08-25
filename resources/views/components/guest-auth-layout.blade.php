@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Selamat Datang PPDB SMPN Mangunreja</title>
+    <title>Selamat Datang di PPDB SMPN 10 Ciamis</title>
     <link rel="stylesheet" href="{{ asset('login') }}/itsform.css">
 </head>
 
